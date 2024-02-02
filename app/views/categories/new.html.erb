@@ -1,28 +1,30 @@
 <!-- app/views/categories/new.html.erb -->
 
-<h1>New Category</h1>
+<div class="container mt-5">
+  <h1 class="mb-4">New Category</h1>
 
-<%= form_with(model: @category, local: true) do |form| %>
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :icon %>
-    <div class="field">
-      <%= form.file_field :icon %>
+  <%= form_with(model: @category, local: true, html: { class: 'form' }) do |form| %>
+    <div class="mb-3">
+      <%= form.label :name, class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-control' %>
     </div>
-  </div>
 
-  <div>
-    <%= form.label :amount %>
-    <%= form.number_field :amount %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :icon, class: 'form-label' %>
+      <div class="input-group">
+        <%= form.file_field :icon, class: 'form-control' %>
+      </div>
+    </div>
 
-  <div>
-    <%= form.submit 'Save Category' %>
-  </div>
-<% end %>
+    <div class="mb-3">
+      <%= form.label :amount, class: 'form-label' %>
+      <%= form.number_field :amount, class: 'form-control' %>
+    </div>
 
-<%= link_to 'Back', categories_path %>
+    <div class="mb-3">
+      <%= form.submit 'Save Category', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+
+  <%= link_to 'Back', categories_path, class: 'btn btn-secondary' %>
+</div>
