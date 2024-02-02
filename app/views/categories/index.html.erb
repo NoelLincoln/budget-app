@@ -1,2 +1,14 @@
-<h1>Categories#index</h1>
-<p>Find me in app/views/categories/index.html.erb</p>
+<!-- app/views/categories/index.html.erb -->
+<h1>Categories</h1>
+
+<% @categories.each do |category| %>
+  <div>
+    <%= image_tag(category.icon, width: 200) if category.icon.present? %>
+
+    <h2><%= category.name %></h2>
+    <p>Total Amount: <%= category.user_transactions.sum(:amount) %></p>
+    <%= link_to 'View Transactions', category_path(category) %>
+  </div>
+<% end %>
+
+<%= link_to 'Add a new category', new_category_path %>

@@ -16,17 +16,28 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(category_params)
+    @category = current_user.categories.build(category_params)
+    attach_icon_to_category
+
     if @category.save
       redirect_to categories_path, notice: 'Category was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
   private
 
+  def attach_icon_to_category
+    return unless params[:category][:icon].present?
+
+    @category.icon.attach(params[:category][:icon])
+
+    # Set the virtual attribute for displaying purposes
+    @category.icon_url = @category.icon.url if @category.icon.attached?
+  end
+
   def category_params
-    params.require(:category).permit(:name, :icon)
+    params.require(:category).permit(:name, :icon, :amount)
   end
 end

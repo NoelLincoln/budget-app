@@ -1,2 +1,28 @@
-<h1>Categories#new</h1>
-<p>Find me in app/views/categories/new.html.erb</p>
+<!-- app/views/categories/new.html.erb -->
+
+<h1>New Category</h1>
+
+<%= form_with(model: @category, local: true) do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :icon %>
+    <div class="field">
+      <%= form.file_field :icon %>
+    </div>
+  </div>
+
+  <div>
+    <%= form.label :amount %>
+    <%= form.number_field :amount %>
+  </div>
+
+  <div>
+    <%= form.submit 'Save Category' %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', categories_path %>
