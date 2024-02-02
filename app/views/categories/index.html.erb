@@ -1,14 +1,27 @@
-<!-- app/views/categories/index.html.erb -->
-<h1>Categories</h1>
+<div class="card d-flex flex-row justify-content-between mb-5">
+  <p>Gift Credit</p>
+  <p>$45</p>
+</div>
 
 <% @categories.each do |category| %>
-  <div>
-    <%= image_tag(category.icon, width: 200) if category.icon.present? %>
+    <%= link_to category_user_transactions_path(category), class: 'category-link' do %>
 
-    <h2><%= category.name %></h2>
-    <p>Total Amount: <%= category.user_transactions.sum(:amount) %></p>
-    <%= link_to 'View Transactions', category_path(category) %>
-  </div>
+      <div class="category-container card d-flex flex-row justify-content-around pt-2 pb-2 mb-4">
+      <div class="category-info d-flex gap-2">
+        <%= image_tag(category.icon, width: 100, height: 100) if category.icon.present? %>
+        <div class="container d-flex flex-column justify-content-between">
+          <h2><%= category.name %></h2>
+          <p>12/12/2024</p>
+        </div>
+      </div>
+      <div class="d-flex">
+        <p>$ <%= category.user_transactions.sum(:amount) %></p>
+      </div>
+    </div>
+  <% end %>
 <% end %>
 
-<%= link_to 'Add a new category', new_category_path %>
+
+<div class="text-center">
+  <%= link_to 'scan', new_category_path, class: 'btn btn-primary' %>
+</div>
