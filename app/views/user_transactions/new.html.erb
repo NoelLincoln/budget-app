@@ -1,2 +1,22 @@
-<h1>UserTransactions#new</h1>
-<p>Find me in app/views/user_transactions/new.html.erb</p>
+<!-- app/views/user_transactions/new.html.erb -->
+<div class="container mt-5">
+  <h1>Add a new transaction</h1>
+
+  <%= form_with(model: @user_transaction, url: category_user_transactions_path(@category), local: true) do |form| %>
+    <div class="mb-3">
+      <%= form.label :name, class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :amount, class: 'form-label' %>
+      <%= form.number_field :amount, class: 'form-control' %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.submit 'Save', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+
+  <%= link_to 'Back', category_user_transactions_path(@category), class: 'btn btn-secondary' %>
+</div>

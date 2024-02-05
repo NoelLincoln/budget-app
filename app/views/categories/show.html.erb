@@ -1,2 +1,12 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<!-- app/views/categories/show.html.erb -->
+<h1><%= @category.name %></h1>
+<%= image_tag(@category.icon, width: 100) if @category.icon.attached? %>
+<p>Total Amount: <%= @total_amount %></p>
+
+<h2>Transactions</h2>
+<% @transactions.each do |transaction| %>
+  <p><%= transaction.description %> - <%= transaction.amount %></p>
+<% end %>
+
+<%= link_to 'Add a new transaction', new_category_user_transaction_path(@category) %>
+<%= link_to 'Back', categories_path %>

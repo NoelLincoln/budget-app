@@ -1,7 +1,6 @@
-# app/models/user_transaction.rb
 class UserTransaction < ApplicationRecord
-  belongs_to :user, foreign_key: :author_id
+  belongs_to :author, class_name: 'User', foreign_key: 'user_id'
   belongs_to :category
-  validates :name, :created_at, presence: true
+  validates :name, presence: true
   validates :amount, numericality: { greater_than_or_equal_to: 0 }
 end

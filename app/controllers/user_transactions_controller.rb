@@ -1,28 +1,56 @@
 # app/controllers/user_transactions_controller.rb
 class UserTransactionsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :find_category, only: [:index, :new, :create]
+
   def index
-    @category = Category.find(params[:category_id])
-    @user_transactions = @category.user_transactions
-  end
-
-  def new
-    @category = Category.find(params[:category_id])
-    @user_transaction = @category.user_transactions.build
-  end
-
-  def create
-    @category = Category.find(params[:category_id])
-    @user_transaction = @category.user_transactions.build(user_transaction_params)
-    if @user_transaction.save
-      redirect_to category_user_transactions_path(@category), notice: 'User Transaction was successfully created.'
+    if params[:category_id]
+      @user_transactions = @category.user_transactions.order(created_at: :desc)
+      @total_amount = @user_transactions.sum(:amount)
     else
-      render :new
+      @user_transactions = current_user.categories.joins(:user_transactions).order('user_transactions.created_at DESC').select('user_transactions.*, categories.name as category_name')
+      @total_amount = @user_transactions.sum(:amount)
     end
   end
 
+  def new
+    @user_transaction = @category.user_transactions.build
+    @categories = current_user.categories
+  end
+
+  # def create
+  #   @user_transaction = @category.user_transactions.build(user_transaction_params)
+  #
+  #   if @user_transaction.save
+  #     redirect_to category_user_transactions_path(@category), notice: 'User Transaction was successfully created.'
+  #   else
+  #     @categories = current_user.categories
+  #     render :new,status: :unprocessable_entity
+  #   end
+  # end
+  #
+  def create
+    # @user_transaction = @category.user_transactions.build(user_transaction_params)
+    @user_transaction = @category.user_transactions.build(user_transaction_params.merge(author: current_user))
+
+    if @user_transaction.save
+      redirect_to category_user_transactions_path(@category), notice: 'User Transaction was successfully created.'
+    else
+      # Add this line to print the validation error messages to the Rails log
+      puts @user_transaction.errors.full_messages
+      @categories = current_user.categories
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+
   private
 
+  def find_category
+    @category = Category.find(params[:category_id])
+  end
+
   def user_transaction_params
-    params.require(:user_transaction).permit(:amount, :description)
+    params.require(:user_transaction).permit(:name, :amount)
   end
 end
