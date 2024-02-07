@@ -1,4 +1,4 @@
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name),html: { id:"login-form", class: "new_user" }) do |f| %>
     <div class="field-container">
     <div class="field">
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control border-0 rounded-0 p-text",

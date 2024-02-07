@@ -14,14 +14,13 @@
 <body>
 <% if user_signed_in? %>
   <!-- Default Navigation Bar -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light bg-primary text-white">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light bg-primary text-white ">
     <div class="container-fluid">
-      <%= link_to "Budget app", root_path, class: "navbar-brand" %>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
               aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="collapse navbar-collapse vh-100" id="navbarNavAltMarkup" style="max-height: 100vh;">
         <div class="navbar-nav">
           <%= link_to "Home", root_path, class: "nav-link active", "aria-current" => "page" %>
           <% if user_signed_in? %>
@@ -41,6 +40,7 @@
           <% end %>
         </div>
       </div>
+      <%= link_to "Budget app", root_path, class: "navbar-brand" %>
     </div>
   </nav>
 <% end %>
@@ -55,13 +55,11 @@
         </svg>
       <% end %>
       <h2 class="navbar-text text-white">LOGIN</h2>
-      <%= form_tag(new_user_session_path, method: :post, id: "login-form") do %>
-        <%= submit_tag "Log in", class: "btn btn-link text-white link", onclick: "document.getElementById('login-form').submit();" %>
-      <% end %>
+        <%= link_to "Log in", "#", class: "btn btn-link text-white link", onclick: "document.getElementById('login-form').submit();" %>
     </div>
   </nav>
 <% end %>
-<% if current_page?(new_user_registration_path) %>
+<% if controller_name == 'registrations' && (action_name == 'new' || action_name == 'create') %>
   <!-- Sign Up Navigation Bar -->
   <nav class="navbar navbar-light bg-light bg-primary text-white">
     <div class="container align-items-baseline">
@@ -70,19 +68,18 @@
           <path fill-rule="evenodd" d="M13.5 8a.5.5 0 0 0-.5-.5H2.707l2.146-2.146a.5.5 0 0 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L2.707 8.5H13a.5.5 0 0 0 .5-.5z"/>
         </svg>
       <% end %>
-      <h2 class="navbar-text text-white">SIGN UP</h2>
-      <%= form_tag(new_user_registration_path, method: :post, id: "signup-form") do %>
-        <%= submit_tag "Sign Up", class: "navbar-link", onclick: "document.getElementById('signup-form').submit();" %>
-      <% end %>
+      <h2 class="navbar-text text-white">REGISTER</h2>
+      <%= link_to "Sign up", "#", class: "btn btn-primary", onclick: "document.getElementById('signup-form').submit();" %>
     </div>
   </nav>
 <% end %>
 
 
-<div class="container mt-5 ">
+<div class="container mt-5">
   <div class="text-center mb-5 ">
     <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, id: "flash_#{name}", class: "alert alert-danger"%>
+      <% alert_class = name == 'error' ? 'alert-danger' : 'alert-success' %>
+      <%= content_tag :div, msg, id: "flash_#{name}", class: "alert #{alert_class}" %>
     <% end %>
   </div>
 
@@ -101,10 +98,17 @@
 <script>
     document.addEventListener("turbolinks:load", function () {
         // Enable Bootstrap collapse for the navbar
-        var navbarCollapse = new bootstrap.Collapse(document.getElementById('navbarNavAltMarkup'));
+        let navbarCollapse = new bootstrap.Collapse(document.getElementById('navbarNavAltMarkup'), {
+            toggle: false // Disable the automatic toggling behavior
+        });
+
+        // // Set the height of the collapsed element to 100vh
+        // let element = document.querySelector('.full-height');
+        //
+        // element.style.height = "100vh";
 
         // Handle click events on nav links
-        var navLinks = document.querySelectorAll('#navbarNavAltMarkup .nav-link');
+        let navLinks = document.querySelectorAll('#navbarNavAltMarkup .nav-link');
         navLinks.forEach(function (navLink) {
             navLink.addEventListener('click', function (event) {
                 event.preventDefault();
@@ -123,6 +127,7 @@
         });
     });
 </script>
+
 
 </body>
 </html>
