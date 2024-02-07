@@ -74,4 +74,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 5.0'
 end
 
+gem 'dotenv-rails', groups: [:development, :test]
+
 gem 'devise', '~> 4.8'

@@ -59,6 +59,7 @@
     </div>
   </nav>
 <% end %>
+
 <% if controller_name == 'registrations' && (action_name == 'new' || action_name == 'create') %>
   <!-- Sign Up Navigation Bar -->
   <nav class="navbar navbar-light bg-light bg-primary text-white">
@@ -69,7 +70,7 @@
         </svg>
       <% end %>
       <h2 class="navbar-text text-white">REGISTER</h2>
-      <%= link_to "Sign up", "#", class: "btn btn-primary", onclick: "document.getElementById('signup-form').submit();" %>
+      <%= link_to "Next", "#", class: "btn btn-link text-white link", onclick: "document.getElementById('signup-form').submit();" %>
     </div>
   </nav>
 <% end %>
