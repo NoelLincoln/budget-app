@@ -7,5 +7,12 @@ Rails.application.routes.draw do
 
   get 'all_transactions', to: 'user_transactions#all_transactions', as: :all_transactions
 
-  root to: 'categories#index'
+  # Set the root route to the home#index action
+  authenticated :user do
+    root 'categories#index', as: :authenticated_root
+  end
+
+  unauthenticated do
+    root 'home#index', as: :unauthenticated_root
+  end
 end

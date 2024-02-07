@@ -17,3 +17,19 @@
 .custom-margin-top-6rm{
     margin-top: 6rem;
 }
+
+.bg-primary {
+    background-color: #3778C2 !important;
+}
+
+.width-90{
+    width: 90%;
+}
+
+.link{
+    text-decoration: none !important;
+}
+
+.p-text{
+    color: #434b54;
+}
