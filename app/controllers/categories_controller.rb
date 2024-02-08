@@ -18,7 +18,6 @@ class CategoriesController < ApplicationController
 
   def create
     @category = current_user.categories.build(category_params)
-    attach_icon_to_category
 
     if @category.save
       redirect_to categories_path, notice: 'Category was successfully created.'
@@ -29,13 +28,7 @@ class CategoriesController < ApplicationController
 
   private
 
-  def attach_icon_to_category
-    return unless params[:category][:icon].present?
-
-    @category.icon.attach(params[:category][:icon])
-  end
-
   def category_params
-    params.require(:category).permit(:name, :icon, :amount)
+    params.require(:category).permit(:name, :icon)
   end
 end

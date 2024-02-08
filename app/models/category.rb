@@ -5,7 +5,14 @@ class Category < ApplicationRecord
   has_one_attached :icon
 
   validates :name, presence: true
-  validates :icon_url, presence: true
-  validates :amount, presence: true
+  validates :icon, presence: true
+
+  after_commit :attach_icon_url, if: -> { icon.attached? }
+
+  private
+
+  def attach_icon_url
+    update_column(:icon_url, Rails.application.routes.url_helpers.rails_blob_url(icon))
+  end
 
 end
