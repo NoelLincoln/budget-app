@@ -1,7 +1,7 @@
 # app/controllers/user_transactions_controller.rb
 class UserTransactionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_category, only: [:index, :new, :create]
+  before_action :find_category, only: [:index]
 
   def index
     if params[:category_id]
@@ -14,9 +14,10 @@ class UserTransactionsController < ApplicationController
   end
 
   def new
-    @user_transaction = @category.user_transactions.build
+    @user_transaction = UserTransaction.new
     @categories = current_user.categories
   end
+
 
   # def create
   #   @user_transaction = @category.user_transactions.build(user_transaction_params)
@@ -30,18 +31,17 @@ class UserTransactionsController < ApplicationController
   # end
   #
   def create
-    # @user_transaction = @category.user_transactions.build(user_transaction_params)
-    @user_transaction = @category.user_transactions.build(user_transaction_params.merge(author: current_user))
+    @user_transaction = UserTransaction.new(user_transaction_params)
+    @user_transaction.author = current_user
 
     if @user_transaction.save
-      redirect_to category_user_transactions_path(@category), notice: 'User Transaction was successfully created.'
+      redirect_to category_user_transactions_path(@user_transaction.category), notice: 'User Transaction was successfully created.'
     else
-      # Add this line to print the validation error messages to the Rails log
-      puts @user_transaction.errors.full_messages
-      @categories = current_user.categories
+      @categories = Category.all
       render :new, status: :unprocessable_entity
     end
   end
+
 
 
   private
@@ -51,6 +51,6 @@ class UserTransactionsController < ApplicationController
   end
 
   def user_transaction_params
-    params.require(:user_transaction).permit(:name, :amount)
+    params.require(:user_transaction).permit(:name, :amount, :category_id)
   end
 end

@@ -3,7 +3,6 @@ class User < ApplicationRecord
 
   # Include default devise modules. Others available are:
   has_many :user_transactions, foreign_key: :author_id
-  has_many :groups
   has_many :categories
   validates :name, presence: true, uniqueness: true
 

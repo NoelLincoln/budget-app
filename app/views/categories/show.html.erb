@@ -8,5 +8,9 @@
   <p><%= transaction.description %> - <%= transaction.amount %></p>
 <% end %>
 
-<%= link_to 'Add a new transaction', new_category_user_transaction_path(@category) %>
+<%#= link_to 'Add a new transaction', new_category_user_transaction_path(@category) %>
+<%= link_to 'Add a new transaction', new_user_transaction_path %>
+
+
+
 <%= link_to 'Back', categories_path %>

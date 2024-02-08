@@ -27,6 +27,8 @@
   <% end %>
 
   <!-- Button to add a new transaction -->
-  <%= link_to 'Add a new transaction', new_category_user_transaction_path(@category), class: 'btn btn-primary' %>
+  <%#= link_to 'Add a new transaction', new_user_transaction_path(@category), class: 'btn btn-primary' %>
+  <%= link_to 'Add New Transaction', url_for(controller: 'user_transactions', action: 'new'), class: 'btn btn-primary' %>
+
 
 </div>
