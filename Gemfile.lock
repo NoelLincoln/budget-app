@@ -101,6 +101,7 @@ GEM
     bootsnap (1.18.3)
       msgpack (~> 1.2)
     builder (3.2.4)
+    cancancan (3.5.0)
     capybara (3.40.0)
       addressable
       matrix
@@ -320,6 +321,7 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk-s3
   bootsnap
+  cancancan
   capybara
   debug
   devise (~> 4.8)

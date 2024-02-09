@@ -1,4 +1,3 @@
-# app/controllers/user_transactions_controller.rb
 class UserTransactionsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_category, only: [:index]
@@ -11,17 +10,20 @@ class UserTransactionsController < ApplicationController
       @user_transactions = current_user.categories.joins(:user_transactions).order('user_transactions.created_at DESC').select('user_transactions.*, categories.name as category_name')
       @total_amount = @user_transactions.sum(:amount)
     end
+    authorize! :read, @user_transactions
   end
 
   def new
     @user_transaction = UserTransaction.new
     @categories = current_user.categories.includes(:user_transactions)
     @user_transaction.category = Category.find(params[:category_id]) if params[:category_id].present?
+    authorize! :create, @user_transaction
   end
 
   def create
     @user_transaction = UserTransaction.new(user_transaction_params)
     @user_transaction.author = current_user
+    authorize! :create, @user_transaction
 
     if @user_transaction.save
       redirect_to category_user_transactions_path(@user_transaction.category), notice: 'User Transaction was successfully created.'
@@ -35,6 +37,7 @@ class UserTransactionsController < ApplicationController
 
   def find_category
     @category = Category.find(params[:category_id])
+    authorize! :read, @category
   end
 
   def user_transaction_params

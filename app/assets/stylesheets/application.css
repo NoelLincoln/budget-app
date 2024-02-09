@@ -19,9 +19,18 @@
     src: url(asset-path('Proxima-Nova-Light.ttf')) format('truetype');
 }
 
+@font-face {
+    font-family: 'ProximaBold';
+    src: url(asset-path('Proxima-Nova-Bold.ttf')) format('truetype');
+}
+
 body {
     font-family: 'ProximaLight', sans-serif;
     background-color: #F5F6F8;
+}
+
+h1,h2{
+    font-family: ProximaBold;
 }
 
 p{
