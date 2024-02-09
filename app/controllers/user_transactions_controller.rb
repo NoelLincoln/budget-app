@@ -5,7 +5,7 @@ class UserTransactionsController < ApplicationController
 
   def index
     if params[:category_id]
-      @user_transactions = @category.user_transactions.order(created_at: :desc)
+      @user_transactions = @category.user_transactions.includes(:author, :category).order(created_at: :desc)
       @total_amount = @user_transactions.sum(:amount)
     else
       @user_transactions = current_user.categories.joins(:user_transactions).order('user_transactions.created_at DESC').select('user_transactions.*, categories.name as category_name')
@@ -15,7 +15,7 @@ class UserTransactionsController < ApplicationController
 
   def new
     @user_transaction = UserTransaction.new
-    @categories = current_user.categories
+    @categories = current_user.categories.includes(:user_transactions)
     @user_transaction.category = Category.find(params[:category_id]) if params[:category_id].present?
   end
 

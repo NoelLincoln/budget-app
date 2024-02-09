@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     @total_amount = @category.user_transactions.sum(:amount)
-    @transactions = @category.user_transactions.order(created_at: :desc)
+    @transactions = @category.user_transactions.includes(:author, :category).order(created_at: :desc)
   end
 
   def new
