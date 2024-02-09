@@ -24,6 +24,10 @@ body {
     background-color: #F5F6F8;
 }
 
+p{
+    color: #434b54;
+}
+
 .custom-margin-top-6rm{
     margin-top: 6rem;
 }
@@ -67,4 +71,12 @@ body {
 
 .scale-on-hover:hover {
     transform: scale(1.1); /* Adjust scaling factor as needed */
+}
+
+.title-margin-top{
+    margin-top: 50%;
+}
+
+.custom-gap-homepage{
+    gap: 14rem;
 }
