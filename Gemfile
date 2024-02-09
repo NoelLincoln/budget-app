@@ -72,6 +72,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 5.0'
+  gem 'shoulda-matchers', '~> 5.0'
 end
 
 gem 'cancancan'
@@ -79,3 +80,5 @@ gem 'cancancan'
 gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'devise', '~> 4.8'
+
+gem 'factory_bot_rails'

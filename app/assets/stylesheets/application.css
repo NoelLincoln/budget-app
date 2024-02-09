@@ -15,77 +15,78 @@
  */
 
 @font-face {
-    font-family: 'ProximaLight';
-    src: url(asset-path('Proxima-Nova-Light.ttf')) format('truetype');
+  font-family: 'ProximaLight';
+  src: url(asset-path('Proxima-Nova-Light.ttf')) format('truetype');
 }
 
 @font-face {
-    font-family: 'ProximaBold';
-    src: url(asset-path('Proxima-Nova-Bold.ttf')) format('truetype');
+  font-family: 'ProximaBold';
+  src: url(asset-path('Proxima-Nova-Bold.ttf')) format('truetype');
 }
 
 body {
-    font-family: 'ProximaLight', sans-serif;
-    background-color: #F5F6F8;
+  font-family: 'ProximaLight', sans-serif;
+  background-color: #f5f6f8;
 }
 
-h1,h2{
-    font-family: ProximaBold;
+h1,
+h2 {
+  font-family: ProximaBold;
 }
 
-p{
-    color: #434b54;
+p {
+  color: #434b54;
 }
 
-.custom-margin-top-6rm{
-    margin-top: 6rem;
+.custom-margin-top-6rm {
+  margin-top: 6rem;
 }
 
 .bg-primary {
-    background-color: #3778C2 !important;
+  background-color: #3778c2 !important;
 }
 
-.width-90{
-    width: 90%;
+.width-90 {
+  width: 90%;
 }
 
-.link{
-    text-decoration: none !important;
+.link {
+  text-decoration: none !important;
 }
 
-.p-text{
-    color: #434b54;
+.p-text {
+  color: #434b54;
 }
 
 .avatar-icon {
-    fill: #434b54;
+  fill: #434b54;
 }
 
 #navbarNavAltMarkup {
-    width: 100%; /* Make the navbar collapse container full width */
+  width: 100%; /* Make the navbar collapse container full width */
 }
 
 .navbar-nav {
-    width: 100%; /* Make the navbar-nav items fill the entire width */
-    justify-content: space-between; /* Distribute items evenly */
+  width: 100%; /* Make the navbar-nav items fill the entire width */
+  justify-content: space-between; /* Distribute items evenly */
 }
 
-.margin-neg-2rem{
-    margin-right: -2.5rem;
+.margin-neg-2rem {
+  margin-right: -2.5rem;
 }
 
 .scale-on-hover {
-    transition: transform 0.3s ease-in-out; /* Adjust duration as needed */
+  transition: transform 0.3s ease-in-out; /* Adjust duration as needed */
 }
 
 .scale-on-hover:hover {
-    transform: scale(1.1); /* Adjust scaling factor as needed */
+  transform: scale(1.1); /* Adjust scaling factor as needed */
 }
 
-.title-margin-top{
-    margin-top: 50%;
+.title-margin-top {
+  margin-top: 50%;
 }
 
-.custom-gap-homepage{
-    gap: 14rem;
+.custom-gap-homepage {
+  gap: 14rem;
 }

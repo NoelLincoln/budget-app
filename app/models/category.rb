@@ -4,7 +4,7 @@ class Category < ApplicationRecord
   has_many :user_transactions, dependent: :destroy
   has_one_attached :icon
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: {case_sensitive: false}
   validates :icon, presence: true
 
   after_commit :attach_icon_url, if: -> { icon.attached? }
