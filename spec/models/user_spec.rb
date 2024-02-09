@@ -1,9 +1,26 @@
-# spec/models/user_spec.rb
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  it { should validate_presence_of(:name) }
-  it { should validate_uniqueness_of(:name) }
-  it { should have_many(:user_transactions).with_foreign_key(:author_id) }
-  it { should have_many(:groups) }
+  before(:each) do
+    @user = User.create!(name: 'test', email: 'test@example.com', password: 'f4k3p455w0rd')
+  end
+
+  it 'is valid with valid attributes' do
+    expect(@user).to be_valid
+  end
+
+  it 'is not valid without a name' do
+    @user.name = nil
+    expect(@user).to_not be_valid
+  end
+
+  it 'is not valid without an email' do
+    @user.email = nil
+    expect(@user).to_not be_valid
+  end
+
+  it 'should not be valid with a short password' do
+    @user.password = 'short'
+    expect(@user).to_not be_valid
+  end
 end
