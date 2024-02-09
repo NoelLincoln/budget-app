@@ -1,5 +1,5 @@
 <!-- app/views/user_transactions/new.html.erb -->
-<div class="container mt-5">
+<div class="container mt-5 pt-5">
   <h1>Add a new transaction</h1>
 
 <%= form_with(model: @user_transaction, url: user_transactions_path, local: true) do |form| %>
@@ -23,10 +23,9 @@
       <%= form.select :category_id, options_from_collection_for_select(@categories, :id, :name), { prompt: "Select Category" }, class: 'form-control' %>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3 d-flex justify-content-center w-100">
       <%= form.submit 'Save', class: 'btn btn-primary' %>
     </div>
   <% end %>
 
-  <%= link_to 'Back', user_transactions_path(@category), class: 'btn btn-secondary' %>
 </div>

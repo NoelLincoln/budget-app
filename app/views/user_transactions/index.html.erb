@@ -1,20 +1,19 @@
-<!-- app/views/user_transactions/index.html.erb -->
-<%= link_to 'Back', categories_path, class: 'btn btn-secondary mt-3' %>
+<div class="container mt-5 pb-5">
+  <div class="text-center">
+    <h1><%= @category.name %> Transactions</h1>
 
-<div class="container mt-5">
-  <h1><%= @category.name %> Transactions</h1>
-
-  <p>Total Amount: $<%= @total_amount %></p>
+    <p>Total Amount: $<%= @total_amount %></p>
+  </div>
 
   <!-- List of transactions ordered by most recent -->
   <% @user_transactions.each do |transaction| %>
-    <div class="card mb-3">
+    <div class="card mb-3 rounded-0">
       <div class="card-body d-flex justify-content-between">
-        <div class="transaction-category-image d-flex align-items-center">
+        <div class="transaction-category-image d-flex align-items-center gap-2">
           <div>
             <%= image_tag(transaction.category.icon, width: 100, height: 100) if transaction.category&.icon.present? %>
           </div>
-          <div class="d-flex flex-column">
+          <div class="d-flex flex-column gap-2">
             <p><%= transaction.name %></p>
             <%= transaction.created_at.strftime('%d %b %Y') %>
           </div>
@@ -26,9 +25,9 @@
     </div>
   <% end %>
 
-  <!-- Button to add a new transaction -->
-  <%#= link_to 'Add a new transaction', new_user_transaction_path(@category), class: 'btn btn-primary' %>
-  <%= link_to 'Add New Transaction', url_for(controller: 'user_transactions', action: 'new'), class: 'btn btn-primary' %>
+<div class="text-center">
+  <%= link_to 'Add a new Transaction', url_for(controller: 'user_transactions', action: 'new'), class: 'btn btn-primary' %>
+</div>
 
 
 </div>

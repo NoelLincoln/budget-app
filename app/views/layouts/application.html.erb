@@ -12,75 +12,25 @@
 </head>
 
 <body>
-<% if user_signed_in? %>
+
+<% if user_signed_in? && controller_name == 'user_transactions' && action_name == 'index' %>
+  <%= render 'shared/user_transactions_navbar' %>
+<% elsif user_signed_in? && controller_name != 'user_transactions' %>
   <!-- Default Navigation Bar -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light bg-primary text-white ">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-              aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse vh-100" id="navbarNavAltMarkup" style="max-height: 100vh;">
-        <div class="navbar-nav">
-          <%= link_to "Home", root_path, class: "nav-link active", "aria-current" => "page" %>
-          <% if user_signed_in? %>
-            <li class="nav-item">
-              <%= link_to "Hi, #{current_user.email}", edit_user_registration_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <%= link_to 'Sign In', new_user_session_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
-            </li>
-          <% end %>
-        </div>
-      </div>
-      <%= link_to "Budget app", root_path, class: "navbar-brand" %>
-    </div>
-  </nav>
+  <%= render 'shared/default_navbar' %>
+<% elsif controller_name == 'sessions' && action_name == 'new' %>
+  <%= render 'shared/sign_in_navbar' %>
+<% elsif controller_name == 'user_transactions' && (action_name == 'new' || action_name == 'create') %>
+  <%= render 'shared/new_transaction_navbar' %>
+<% elsif controller_name == 'registrations' && (action_name == 'new' || action_name == 'create') %>
+  <%= render 'shared/sign_up_navbar' %>
 <% end %>
-
-<% if controller_name == 'sessions' && action_name == 'new' %>
-  <!-- Sign In Navigation Bar -->
-  <nav class="navbar navbar-light bg-light bg-primary text-white">
-    <div class="container align-items-baseline">
-      <%= link_to root_path, class: "navbar-brand" do %>
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="white" class="bi bi-arrow-left" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M13.5 8a.5.5 0 0 0-.5-.5H2.707l2.146-2.146a.5.5 0 0 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L2.707 8.5H13a.5.5 0 0 0 .5-.5z"/>
-        </svg>
-      <% end %>
-      <h2 class="navbar-text text-white">LOGIN</h2>
-        <%= link_to "Log in", "#", class: "btn btn-link text-white link", onclick: "document.getElementById('login-form').submit();" %>
-    </div>
-  </nav>
-<% end %>
-
-<% if controller_name == 'registrations' && (action_name == 'new' || action_name == 'create') %>
-  <!-- Sign Up Navigation Bar -->
-  <nav class="navbar navbar-light bg-light bg-primary text-white">
-    <div class="container align-items-baseline">
-      <%= link_to root_path, class: "navbar-brand" do %>
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="white" class="bi bi-arrow-left" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M13.5 8a.5.5 0 0 0-.5-.5H2.707l2.146-2.146a.5.5 0 0 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L2.707 8.5H13a.5.5 0 0 0 .5-.5z"/>
-        </svg>
-      <% end %>
-      <h2 class="navbar-text text-white">REGISTER</h2>
-      <%= link_to "Next", "#", class: "btn btn-link text-white link", onclick: "document.getElementById('signup-form').submit();" %>
-    </div>
-  </nav>
-<% end %>
-
 
 <div class="container mt-5">
   <div class="text-center mb-5 ">
     <% flash.each do |name, msg| %>
       <% alert_class = name == 'error' ? 'alert-danger' : 'alert-success' %>
-      <%= content_tag :div, msg, id: "flash_#{name}", class: "alert #{alert_class}" %>
+      <%= content_tag :div, msg, id: "flash_#{name}", class: "alert #{alert_class}", data: { behavior: "flash" } %>
     <% end %>
   </div>
 
@@ -127,6 +77,19 @@
             });
         });
     });
+
+</script>
+<script>
+    document.addEventListener('turbolinks:load', function() {
+        const flashMessages = document.querySelectorAll('[data-behavior="flash"]');
+
+        flashMessages.forEach(flash => {
+            setTimeout(() => {
+                flash.remove();
+            }, 3000); // 3000 milliseconds = 3 seconds
+        });
+    });
+
 </script>
 
 

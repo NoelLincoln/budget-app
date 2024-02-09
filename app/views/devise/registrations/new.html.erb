@@ -16,13 +16,14 @@
         <hr class="my-4">
 
         <div class="mb-3">
-          <%= f.text_field :name, class: "form-control border-0", placeholder: "Name", autofocus: true %>
+          <%= f.text_field :name, class: "form-control border-0", placeholder: "Name", autofocus: true,required:true %>
         </div>
 
         <hr class="my-4">
 
         <div class="mb-3">
-          <%= f.email_field :email, class: "form-control border-0", placeholder: "Email", autocomplete: "email" %>
+          <%= f.email_field :email, class: "form-control border-0", placeholder: "Email", autocomplete: "email",
+          required:true%>
         </div>
 
         <hr class="my-4">
@@ -31,13 +32,15 @@
           <% if @minimum_password_length %>
             <small class="text-muted">(<%= @minimum_password_length %> characters minimum)</small>
           <% end %>
-          <%= f.password_field :password, class: "form-control border-0", placeholder: "Password", autocomplete: "new-password" %>
+          <%= f.password_field :password, class: "form-control border-0", placeholder: "Password",
+                               autocomplete: "new-password",required:true %>
         </div>
 
         <hr class="my-4">
 
         <div class="mb-3">
-          <%= f.password_field :password_confirmation, class: "form-control border-0", placeholder: "Confirm Password", autocomplete: "new-password" %>
+          <%= f.password_field :password_confirmation, class: "form-control border-0",
+                               placeholder: "Confirm Password", autocomplete: "new-password",required:true %>
         </div>
 
     <% end %>

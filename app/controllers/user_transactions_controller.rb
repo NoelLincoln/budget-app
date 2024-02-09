@@ -16,20 +16,9 @@ class UserTransactionsController < ApplicationController
   def new
     @user_transaction = UserTransaction.new
     @categories = current_user.categories
+    @user_transaction.category = Category.find(params[:category_id]) if params[:category_id].present?
   end
 
-
-  # def create
-  #   @user_transaction = @category.user_transactions.build(user_transaction_params)
-  #
-  #   if @user_transaction.save
-  #     redirect_to category_user_transactions_path(@category), notice: 'User Transaction was successfully created.'
-  #   else
-  #     @categories = current_user.categories
-  #     render :new,status: :unprocessable_entity
-  #   end
-  # end
-  #
   def create
     @user_transaction = UserTransaction.new(user_transaction_params)
     @user_transaction.author = current_user
@@ -41,8 +30,6 @@ class UserTransactionsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
-
 
   private
 
