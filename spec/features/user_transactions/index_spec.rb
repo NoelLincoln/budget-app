@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'UserTransactions', type: :feature do
-  let(:category) { FactoryBot.create(:category, name: 'Food') }
+  let(:category) { FactoryBot.create(:category) }
   let(:user_transactions) { create_list(:user_transaction, 0, category:) }
   let(:total_amount) { user_transactions.sum(&:amount) }
 

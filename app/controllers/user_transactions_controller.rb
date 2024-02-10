@@ -2,11 +2,12 @@ class UserTransactionsController < ApplicationController
   before_action :find_category, only: [:index]
 
   def index
-    if params[:category_id]
-      @user_transactions = @category.user_transactions.includes(:author, :category).order(created_at: :desc)
-    else
-      @user_transactions = current_user.categories.joins(:user_transactions).order('user_transactions.created_at DESC').select('user_transactions.*, categories.name as category_name')
-    end
+    @user_transactions = if params[:category_id]
+                           @category.user_transactions.includes(:author, :category).order(created_at: :desc)
+                         else
+                           current_user.categories.joins(:user_transactions).order('user_transactions.created_at DESC')
+                             .select('user_transactions.*, categories.name as category_name')
+                         end
     @total_amount = @user_transactions.sum(:amount)
   end
 
