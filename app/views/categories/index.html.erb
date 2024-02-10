@@ -1,0 +1,29 @@
+<div class="container mt-5 pt-5">
+  <div class="row">
+    <% @categories.each do |category| %>
+      <div class="col-6"> <!-- Bootstrap class for 2 cards per row on medium screens and up -->
+        <%= link_to category_user_transactions_path(category), class: 'category-link link' do %>
+          <div class="card mb-4">
+            <div class="row g-0">
+
+              <div class="col-md-8 justify-content-center">
+                <div class="card-body d-flex flex-column align-items-center gap-2 scale-on-hover">
+                  <h5 class="card-title link p-text"><%= category.name %></h5>
+                  <div class="col-md-4">
+                    <%= image_tag(category.icon, class: 'img-fluid rounded-start') if category.icon.present? %>
+                  </div>
+                  <p class="card-text link p-text">$<%= category.user_transactions.sum(:amount) %></p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="text-center mb-5">
+  <%= link_to 'add a new category', new_category_path, class: 'btn btn-primary' %>
+</div>
