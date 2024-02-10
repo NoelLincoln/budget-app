@@ -1,0 +1,25 @@
+<!-- app/views/categories/new.html.erb -->
+
+<div class="container mt-5 pt-5">
+  <h1 class="mb-4">New Category</h1>
+
+  <%= form_with(model: @category, local: true, html: { class: 'form' }) do |form| %>
+    <div class="mb-3">
+      <%= form.label :name, "Name", class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :icon, class: 'form-label' %>
+      <div class="input-group">
+        <%= form.file_field :icon, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <%= form.submit 'Save Category', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+
+  <%= link_to 'Back', categories_path, class: 'btn btn-secondary' %>
+</div>

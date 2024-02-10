@@ -1,0 +1,17 @@
+<!-- app/views/home/index.html.erb -->
+<div class="container-fluid d-flex flex-column align-items-center justify-content-between custom-gap-homepage">
+  <div class="title-margin-top">
+    <h1>Expense Tracker</h1>
+  </div>
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-6 d-flex flex-column">
+        <%= link_to "Log in", new_user_session_path, class: "btn btn-primary btn-lg btn-block mb-2 rounded-0" %>
+        <div class="w-100 text-center">
+            <%= link_to "Sign up", new_user_registration_path, class: " p-text link" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

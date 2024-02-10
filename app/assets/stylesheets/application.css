@@ -1,0 +1,141 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@font-face {
+  font-family: 'ProximaLight';
+  src: url('../fonts/Proxima-Nova-Light.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'ProximaBold';
+  src: url('../fonts/Proxima-Nova-Bold.otf') format('truetype');
+}
+
+body {
+  font-family: 'ProximaLight', sans-serif;
+  background-color: #f5f6f8;
+}
+
+h1,
+h2 {
+  font-family: ProximaBold, sans-serif;
+}
+
+p {
+  color: #434b54;
+}
+
+.custom-margin-top-6rm {
+  margin-top: 6rem;
+}
+
+.bg-primary {
+  background-color: #3778c2 !important;
+}
+
+.width-90 {
+  width: 90%;
+}
+
+.link {
+  text-decoration: none !important;
+}
+
+.p-text {
+  color: #434b54;
+}
+
+.avatar-icon {
+  fill: #434b54;
+}
+
+#navbarNavAltMarkup {
+  width: 100%; /* Make the navbar collapse container full width */
+}
+
+.navbar-nav {
+  width: 100%; /* Make the navbar-nav items fill the entire width */
+  justify-content: space-between; /* Distribute items evenly */
+}
+
+.margin-neg-2rem {
+  margin-right: -2.5rem;
+}
+
+.scale-on-hover {
+  transition: transform 0.3s ease-in-out; /* Adjust duration as needed */
+}
+
+.scale-on-hover:hover {
+  transform: scale(1.1); /* Adjust scaling factor as needed */
+}
+
+.title-margin-top {
+  margin-top: 50%;
+}
+
+.custom-gap-homepage {
+  gap: 14rem;
+}
+
+.btn-unstyled {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline; /* Optionally add underline effect */
+  color: inherit; /* Optionally inherit text color */
+}
+
+.white-icon {
+  filter: brightness(0) invert(1);
+  border: none !important; /* Remove the border */
+}
+
+.category-tile {
+  width: 200px;
+  height: 200px;
+}
+
+.category-image {
+  width: 150px;
+  height: 150px;
+}
+
+.bg-green {
+  background-color: #5fb523;
+}
+
+.fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1030;
+}
+
+.card-btn {
+  width: 80%;
+  height: 2rem;
+}
+
+.width-95 {
+  width: 95%;
+}
+
+.height-4 {
+  height: 4rem;
+}
