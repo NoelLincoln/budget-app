@@ -93,5 +93,14 @@ Rails.application.configure do
   #   /.*\.example\.com/ # Allow requests from subdomains like www.example.com
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
+  # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: ENV['SMTP_ADDRESS'],
+    port: ENV['SMTP_PORT'],
+    user_name: ENV['SMTP_USERNAME'],
+    password: ENV['SMTP_PASSWORD'],
+  }
   # config.host_authorization = { exclude: ->(request) { request.path =="/up"}
 end
