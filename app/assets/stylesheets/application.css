@@ -106,17 +106,17 @@ p {
   border: none !important; /* Remove the border */
 }
 
-.category-tile{
+.category-tile {
   width: 200px;
   height: 200px;
 }
 
-.category-image{
+.category-image {
   width: 150px;
   height: 150px;
 }
 
-.bg-green{
+.bg-green {
   background-color: #5fb523;
 }
 
@@ -127,15 +127,15 @@ p {
   z-index: 1030;
 }
 
-.card-btn{
+.card-btn {
   width: 80%;
   height: 2rem;
 }
 
-.width-95{
+.width-95 {
   width: 95%;
 }
 
-.height-4{
+.height-4 {
   height: 4rem;
 }
