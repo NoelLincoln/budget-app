@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "UserTransactions", type: :feature do
-  let(:category) { FactoryBot.create(:category, name: "Food") }
-  let(:user_transactions) { create_list(:user_transaction, 0, category: category) }
+RSpec.describe 'UserTransactions', type: :feature do
+  let(:category) { FactoryBot.create(:category, name: 'Food') }
+  let(:user_transactions) { create_list(:user_transaction, 0, category:) }
   let(:total_amount) { user_transactions.sum(&:amount) }
 
   before do
@@ -10,17 +10,16 @@ RSpec.describe "UserTransactions", type: :feature do
     puts page.html
   end
 
-  it "displays the category name and total amount" do
+  it 'displays the category name and total amount' do
     expect(page).to have_content("#{category.name} Transactions")
     expect(page).to have_content("Total Amount: $#{total_amount}")
   end
 
-  it "displays each user transaction with its details" do
+  it 'displays each user transaction with its details' do
     user_transactions.each do |transaction|
-      expect(page).to have_css(".card-body", text: transaction.name)
-      expect(page).to have_css(".card-body", text: transaction.created_at.strftime('%d %b %Y'))
-      expect(page).to have_css(".card-body", text: "$#{transaction.amount}")
+      expect(page).to have_css('.card-body', text: transaction.name)
+      expect(page).to have_css('.card-body', text: transaction.created_at.strftime('%d %b %Y'))
+      expect(page).to have_css('.card-body', text: "$#{transaction.amount}")
     end
   end
 end
-

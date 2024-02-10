@@ -16,12 +16,12 @@
 
 @font-face {
   font-family: 'ProximaLight';
-  src: url(asset-path('Proxima-Nova-Light.ttf')) format('truetype');
+  src: url('../fonts/Proxima-Nova-Light.otf') format('truetype');
 }
 
 @font-face {
   font-family: 'ProximaBold';
-  src: url(asset-path('Proxima-Nova-Bold.ttf')) format('truetype');
+  src: url('../fonts/Proxima-Nova-Bold.otf') format('truetype');
 }
 
 body {
@@ -31,7 +31,7 @@ body {
 
 h1,
 h2 {
-  font-family: ProximaBold;
+  font-family: ProximaBold, sans-serif;
 }
 
 p {

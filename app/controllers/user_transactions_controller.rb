@@ -4,11 +4,10 @@ class UserTransactionsController < ApplicationController
   def index
     if params[:category_id]
       @user_transactions = @category.user_transactions.includes(:author, :category).order(created_at: :desc)
-      @total_amount = @user_transactions.sum(:amount)
     else
       @user_transactions = current_user.categories.joins(:user_transactions).order('user_transactions.created_at DESC').select('user_transactions.*, categories.name as category_name')
-      @total_amount = @user_transactions.sum(:amount)
     end
+    @total_amount = @user_transactions.sum(:amount)
   end
 
   def new
@@ -22,7 +21,8 @@ class UserTransactionsController < ApplicationController
     @user_transaction.author = current_user
 
     if @user_transaction.save
-      redirect_to category_user_transactions_path(@user_transaction.category), notice: 'User Transaction was successfully created.'
+      redirect_to category_user_transactions_path(@user_transaction.category),
+                  notice: 'User Transaction was successfully created.'
     else
       @categories = Category.all
       render :new, status: :unprocessable_entity

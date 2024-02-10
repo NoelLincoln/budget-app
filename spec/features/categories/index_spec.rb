@@ -11,8 +11,10 @@ RSpec.feature 'Categories Index Page', type: :feature do
     sign_in(user)
 
     # Create some categories associated with the user
-    category1 = create(:category, name: 'Category 1', user: user, icon: fixture_file_upload(Rails.root.join('spec', 'fixtures', 'test.png'), 'image/png'))
-    category2 = create(:category, name: 'Category 2', user: user, icon: fixture_file_upload(Rails.root.join('spec', 'fixtures', 'test.png'), 'image/png'))
+    category1 = create(:category, name: 'Category 1', user:,
+                                  icon: fixture_file_upload(Rails.root.join('spec', 'fixtures', 'test.png'), 'image/png'))
+    category2 = create(:category, name: 'Category 2', user:,
+                                  icon: fixture_file_upload(Rails.root.join('spec', 'fixtures', 'test.png'), 'image/png'))
 
     # Create user transactions for each category
     create(:user_transaction, name: 'Transaction 1', amount: 100, category: category1, author: user)
@@ -40,7 +42,8 @@ RSpec.feature 'Categories Index Page', type: :feature do
     login_as(user, scope: :user)
 
     # Create a category associated with the user
-    category = create(:category, name: 'Category 1', user: user, icon: fixture_file_upload(Rails.root.join('spec', 'fixtures', 'images', 'test.png'), 'image/png'))
+    category = create(:category, name: 'Category 1', user:,
+                                 icon: fixture_file_upload(Rails.root.join('spec', 'fixtures', 'images', 'test.png'), 'image/png'))
 
     # Visit the categories index page
     visit categories_path

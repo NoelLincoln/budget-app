@@ -4,4 +4,3 @@ class HomeController < ApplicationController
     # No need for any logic here since this is just the default homepage
   end
 end
-
