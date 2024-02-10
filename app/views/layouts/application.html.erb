@@ -49,36 +49,27 @@
 <script>
     document.addEventListener("turbolinks:load", function () {
         // Enable Bootstrap collapse for the navbar
-        let navbarCollapse = new bootstrap.Collapse(document.getElementById('navbarNavAltMarkup'), {
-            toggle: false // Disable the automatic toggling behavior
+        let navbarToggle = document.querySelector('.navbar-toggler');
+        let navbarCollapse = document.querySelector('.navbar-collapse');
+
+        navbarToggle.addEventListener('click', function () {
+            if (navbarCollapse.classList.contains('show')) {
+                navbarCollapse.classList.remove('show');
+            } else {
+                navbarCollapse.classList.add('show');
+            }
         });
 
-        // // Set the height of the collapsed element to 100vh
-        // let element = document.querySelector('.full-height');
-        //
-        // element.style.height = "100vh";
-
         // Handle click events on nav links
-        let navLinks = document.querySelectorAll('#navbarNavAltMarkup .nav-link');
+        let navLinks = document.querySelectorAll('.navbar-nav .nav-link');
         navLinks.forEach(function (navLink) {
-            navLink.addEventListener('click', function (event) {
-                event.preventDefault();
-
-                // Remove 'active' class from all nav links
-                navLinks.forEach(function (link) {
-                    link.classList.remove('active');
-                });
-
-                // Add 'active' class to the clicked nav link
-                this.classList.add('active');
-
-                // Close the navbar if it's open
-                navbarCollapse.hide();
+            navLink.addEventListener('click', function () {
+                navbarCollapse.classList.remove('show');
             });
         });
     });
-
 </script>
+
 <script>
     document.addEventListener('turbolinks:load', function() {
         const flashMessages = document.querySelectorAll('[data-behavior="flash"]');

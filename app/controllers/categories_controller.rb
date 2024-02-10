@@ -1,10 +1,10 @@
 class CategoriesController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_category, only: [:show]
+  load_and_authorize_resource
+
 
   def index
     @categories = Category.all
-    authorize! :read, @categories
   end
 
   def show
@@ -15,12 +15,10 @@ class CategoriesController < ApplicationController
 
   def new
     @category = Category.new
-    authorize! :create, @category
   end
 
   def create
     @category = current_user.categories.build(category_params)
-    authorize! :create, @category
 
     if @category.save
       redirect_to categories_path, notice: 'Category was successfully created.'

@@ -90,3 +90,23 @@ p {
 .custom-gap-homepage {
   gap: 14rem;
 }
+
+.btn-unstyled {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline; /* Optionally add underline effect */
+  color: inherit; /* Optionally inherit text color */
+}
+
+/* Optionally style button on hover */
+.btn-unstyled:hover {
+  /* Add hover styles if needed */
+}
+
+.white-icon {
+  filter: brightness(0) invert(1);
+  border: none !important; /* Remove the border */
+}

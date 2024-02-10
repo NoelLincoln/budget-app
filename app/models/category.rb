@@ -12,7 +12,8 @@ class Category < ApplicationRecord
   private
 
   def attach_icon_url
-    update_column(:icon_url, Rails.application.routes.url_helpers.rails_blob_url(icon))
+    host = Rails.env.production? ? 'example.com' : 'localhost:3000'
+    update_column(:icon_url, Rails.application.routes.url_helpers.rails_blob_url(icon, host: host))
   end
 
 end

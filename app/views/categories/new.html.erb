@@ -5,7 +5,7 @@
 
   <%= form_with(model: @category, local: true, html: { class: 'form' }) do |form| %>
     <div class="mb-3">
-      <%= form.label :name, class: 'form-label' %>
+      <%= form.label :name, "Name", class: 'form-label' %>
       <%= form.text_field :name, class: 'form-control' %>
     </div>
 

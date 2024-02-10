@@ -11,11 +11,11 @@ Rails.application.routes.draw do
 
   authenticated :user do
 
-    root 'categories#index', as: :authenticated_root
+    root to: 'categories#index', as: :authenticated_root
 
   end
 
   unauthenticated do
-    root 'home#index', as: :unauthenticated_root
+    root to: 'home#index', as: :unauthenticated_root
   end
 end
