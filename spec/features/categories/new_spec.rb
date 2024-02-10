@@ -4,7 +4,6 @@ RSpec.feature 'Categories', type: :feature do
   let(:user) { create(:user) }
 
   before do
-    user.confirm
     login_as(user, scope: :user)
   end
 

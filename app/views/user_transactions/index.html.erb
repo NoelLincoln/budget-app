@@ -25,9 +25,11 @@
     </div>
   <% end %>
 
-<div class="text-center">
-  <%= link_to 'Add a new Transaction', url_for(controller: 'user_transactions', action: 'new'), class: 'btn btn-primary' %>
-</div>
-
+  <div class="text-center mb-5 bg-green">
+    <div class="btn-container border border-white">
+      <%= link_to 'Add a new Transaction', url_for(controller: 'user_transactions', action: 'new'), class: 'btn d-flex flex-column
+     mx-2 my-3 text-white justify-content-center border border-white width-95 height-4' %>
+    </div>
+  </div>
 
 </div>

@@ -1,29 +1,31 @@
 <div class="container mt-5 pt-5">
   <div class="row">
     <% @categories.each do |category| %>
-      <div class="col-6"> <!-- Bootstrap class for 2 cards per row on medium screens and up -->
+      <div class="col-6">
         <%= link_to category_user_transactions_path(category), class: 'category-link link' do %>
-          <div class="card mb-4">
+          <div class="card mb-4" style="height: 250px;"> <!-- Set a fixed height for the card -->
             <div class="row g-0">
-
-              <div class="col-md-8 justify-content-center">
-                <div class="card-body d-flex flex-column align-items-center gap-2 scale-on-hover">
-                  <h5 class="card-title link p-text"><%= category.name %></h5>
-                  <div class="col-md-4">
-                    <%= image_tag(category.icon, class: 'img-fluid rounded-start') if category.icon.present? %>
+              <div class="col-md-8 justify-content-center category-tile">
+                <div class="card-body d-flex flex-column align-items-center gap-2 scale-on-hover" style="height: 100%;">
+                  <h5 class="card-title link p-text" style="font-size: 18px;"><%= category.name %></h5> <!-- Adjust font size as needed -->
+                  <div class="col-md-4 category-image" style="height: 120px;"> <!-- Set a fixed height for the image container -->
+                    <%= image_tag(category.icon, class: 'img-fluid rounded-start', style: 'object-fit: contain; height: 100%; width: 100%;') if category.icon.present? %>
                   </div>
-                  <p class="card-text link p-text">$<%= category.user_transactions.sum(:amount) %></p>
+                  <p class="card-text link p-text" style="font-size: 16px;">$<%= category.user_transactions.sum(:amount) %></p> <!-- Adjust font size as needed -->
                 </div>
               </div>
-
             </div>
           </div>
         <% end %>
       </div>
     <% end %>
+
   </div>
 </div>
 
-<div class="text-center mb-5" id="add-category-button">
-  <%= link_to 'add a new category', new_category_path, class: 'btn btn-primary' %>
+<div class="text-center mb-5 bg-green">
+  <div class="btn-container border border-white">
+    <%= link_to 'add a new category', new_category_path, class: 'btn d-flex flex-column
+     mx-2 my-3 text-white justify-content-center border border-white width-95 height-4' %>
+  </div>
 </div>
