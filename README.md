@@ -14,6 +14,7 @@
     - [Install](#install)
     - [Usage](#usage)
     - [Run tests](#run-tests)
+    - [Video Demo](#live-demo)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
@@ -94,6 +95,12 @@ rspec
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+##  Video Demo <a name="video-demo"></a>
+  Here is the loom video of the [presentation](https://www.loom.com/share/7c0ac086deb44757a0d82f4987d7818e?sid=da332b3f-7b90-4d26-9088-355fde6335d8)
+
+##  Link to project <a name="live-demo"></a>
+   [Expense Tracker](https://expense-tracker-felf.onrender.com/)
 
 ## 👥 Authors <a name="authors"></a>
 
