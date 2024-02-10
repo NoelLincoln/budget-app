@@ -12,7 +12,7 @@
 /.env*
 !/.env*.erb
 config/credentials
-config/master.key
+/config/master.key
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
