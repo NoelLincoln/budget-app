@@ -12,7 +12,7 @@ RSpec.feature 'Categories Index Page - Viewing Transactions', type: :feature do
   private
 
   def create_and_sign_in_user
-    user = create(:user).tap(&:confirm)
+    user = create(:user)
     sign_in(user)
     user
   end
@@ -46,7 +46,7 @@ RSpec.feature 'Categories Index Page - Adding Category', type: :feature do
   private
 
   def create_and_sign_in_user
-    user = create(:user).tap(&:confirm)
+    user = create(:user)
     sign_in(user)
     user
   end

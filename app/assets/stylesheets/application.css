@@ -115,3 +115,27 @@ p {
   width: 150px;
   height: 150px;
 }
+
+.bg-green{
+  background-color: #5fb523;
+}
+
+.fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1030;
+}
+
+.card-btn{
+  width: 80%;
+  height: 2rem;
+}
+
+.width-95{
+  width: 95%;
+}
+
+.height-4{
+  height: 4rem;
+}
