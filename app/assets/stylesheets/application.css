@@ -106,9 +106,12 @@ p {
   border: none !important; /* Remove the border */
 }
 
-#add-category-button {
-  position: absolute;
-  bottom: 20px; /* Adjust the distance from the bottom as needed */
-  left: 50%;
-  transform: translateX(-50%);
+.category-tile{
+  width: 200px;
+  height: 200px;
+}
+
+.category-image{
+  width: 150px;
+  height: 150px;
 }
