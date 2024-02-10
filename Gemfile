@@ -70,7 +70,7 @@ end
 
 gem 'cancancan'
 
-gem 'dotenv-rails', groups: %i[development test]
+gem 'dotenv-rails', groups: %i[production development test]
 
 gem 'devise', '~> 4.8'
 
