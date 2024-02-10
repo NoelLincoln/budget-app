@@ -101,12 +101,14 @@ p {
   color: inherit; /* Optionally inherit text color */
 }
 
-/* Optionally style button on hover */
-.btn-unstyled:hover {
-  /* Add hover styles if needed */
-}
-
 .white-icon {
   filter: brightness(0) invert(1);
   border: none !important; /* Remove the border */
+}
+
+#add-category-button {
+  position: absolute;
+  bottom: 20px; /* Adjust the distance from the bottom as needed */
+  left: 50%;
+  transform: translateX(-50%);
 }
